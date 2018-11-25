@@ -20,7 +20,7 @@ function addPlayers(){
     <div class="scoreNodeContainer"><input class="scoreNode node6 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node7 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node8 player${i}"></div>
-    <div class="scoreNodeContainer OUT${i}"><div class="rowItem">X</div></div>
+    <div class="scoreNodeContainer OUT${i}"><div class="holder">X</div></div>
     <div class="scoreNodeContainer"><input class="scoreNode node9 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node10 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node11 player${i}"></div>
@@ -30,7 +30,7 @@ function addPlayers(){
     <div class="scoreNodeContainer"><input class="scoreNode node15 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node16 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node17 player${i}"></div>
-    <div class="scoreNodeContainer IN${i}"><div class="rowItem">X</div></div>
+    <div class="scoreNodeContainer IN${i}"><div class="holder">X</div></div>
     <div class="scoreNodeContainer total${i}"></div>
 </div>
 `);
