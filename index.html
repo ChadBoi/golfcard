@@ -15,29 +15,61 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-<div class="modal">
+<div class="modal playerSelector">
     <div class="panel">
         <span>Number of Players</span>
         <input class="numInput" type="number" placeholder="number of players">
         <button onclick="addPlayers()">GO</button>
     </div>
 </div>
-<div class="content">
-    <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quam sem, elementum facilisis blandit a,
-        pharetra nec nisl. Donec hendrerit ipsum in dapibus rhoncus. Vivamus sed dui vulputate massa consectetur ornare.
-        Duis facilisis molestie lectus et tincidunt. In eget tortor pulvinar, tincidunt odio et, laoreet magna. Nulla
-        vel leo pulvinar, malesuada erat ac, cursus justo. Suspendisse et quam est. Nulla tempus tellus vel ipsum
-        pellentesque, sed luctus purus ullamcorper.
-
-        Donec faucibus erat dapibus, mollis turpis id, pulvinar sem. In nec odio a urna eleifend fringilla vitae in
-        nulla. Morbi tristique ante felis, in pharetra diam lacinia eu. Praesent elit sapien, hendrerit ut euismod quis,
-        accumsan id urna. Nulla et massa urna. In vulputate leo nec sollicitudin egestas. Donec id dui ultrices, laoreet
-        libero id, tristique eros. Mauris id tincidunt sapien, vel sollicitudin sem. Integer sed dolor eu urna luctus
-        congue sit amet et turpis. Donec magna nisi, tincidunt a tincidunt eu, iaculis at lectus. Vestibulum facilisis
-        enim nunc, eu sagittis odio bibendum a. Nam placerat eget nulla non accumsan. Duis sagittis ex sit amet sodales
-        tempor. Aenean a magna condimentum, ultrices arcu a, sollicitudin quam.
+<div class="modal courseSelector">
+    <div class="panel">
+        <span>Select Course</span>
+        <select class="courseID">
+            <option value="0">Fox Hollow</option>
+            <option value="1">Thanksgiving Point</option>
+            <option value="2">Spanish Oaks</option>
+        </select>
+        <select class="teeType">
+            <option value="0">Pro</option>
+            <option value="1">Champion</option>
+            <option value="2">Mens</option>
+            <option value="3">Womens</option>
+        </select>
+        <button onclick="addCourse()">GO</button>
     </div>
+</div>
+<div class="content">
+    <div class="row0">
+        <div class="courseName"></div>
+        <div class="holeO hole"></div>
+        <div class="holeO hole"></div>
+        <div class="holeO hole"></div>
+        <div class="holeO hole"></div>
+        <div class="holeO hole"></div>
+        <div class="holeO hole"></div>
+        <div class="holeO hole"></div>
+        <div class="holeO hole"></div>
+        <div class="holeO hole"></div>
+        <div class="OUT"></div>
+        <div class="holeI hole"></div>
+        <div class="holeI hole"></div>
+        <div class="holeI hole"></div>
+        <div class="holeI hole"></div>
+        <div class="holeI hole"></div>
+        <div class="holeI hole"></div>
+        <div class="holeI hole"></div>
+        <div class="holeI hole"></div>
+        <div class="holeI hole"></div>
+        <div class="IN"></div>
+        <div class="total"></div>
+    </div>
+    /*
+    Yard Row
+    Par Row
+    Handicap Row
+    */
+
 </div>
 </body>
 </html>
