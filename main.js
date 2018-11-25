@@ -1,7 +1,6 @@
 let teeType;
 let courseID;
 
-
 function removePlayer(player){
     $(player).remove()
 }
