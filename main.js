@@ -39,14 +39,41 @@ function addCourse() {
         $.getJSON(`https://golf-courses-api.herokuapp.com/courses/${courseID}`, function(myData) {
             let appendString = ``;
             let totalYards;
-            console.log(myData.data.holes);
             for (let i = 0; i < 9; i++) {
                 appendString += `<div class="yard rowItem">${myData.data.holes[i].teeBoxes[teeType].yards}</div>
 `;
                 totalYards += myData.data.holes[i].teeBoxes[teeType].yards;
             }
             $(".row1").append(appendString);
+            $(".row1").append(`<div class="totalYards">${totalYards}</div>`);
+            let totalYards2;
+            appendString = ``;
+            for (let i = 9; i < 18; i++) {
+                appendString += `<div class="yard rowItem">${myData.data.holes[i].teeBoxes[teeType].yards}</div>
+`;
+                totalYards2 += myData.data.holes[i].teeBoxes[teeType].yards;
+            }
+            $(".row1").append(`<div class="totalYards">${totalYards2}</div>`);
+            $(".row1").append(`<div class="totalYards">${totalYards + totalYards2}</div>`);
+
+            appendString = ``;
+            totalPar;
+            for (let i = 0; i < 9; i++) {
+                appendString += `<div class="yard rowItem">${myData.data.holes[i].teeBoxes[teeType].par}</div>
+`;
+                totalYards += myData.data.holes[i].teeBoxes[teeType].par;
+            }
+            $(".row1").append(appendString);
+            $(".row1").append(`totalYards`);
+            totalPar2;
+            appendString = ``;
+            for (let i = 9; i < 18; i++) {
+                appendString += `<div class="yard rowItem">${myData.data.holes[i].teeBoxes[teeType].yards}</div>
+`;
+                totalYards2 += myData.data.holes[i].teeBoxes[teeType].yards;
+            }
         });
+
 
     });
 
