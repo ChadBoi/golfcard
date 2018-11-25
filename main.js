@@ -10,7 +10,7 @@ function addPlayers(){
     for (let i = 0; i < numPlayers; i++){
         $(".playerContain").append(`
 <div class="player-container-${i} player-container">
-    <div class="player">Player ${i+1}</div>
+    <div class="player"><input class="playerInput" placeholder="Player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node0 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node1 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node2 player${i}"></div>
@@ -20,7 +20,7 @@ function addPlayers(){
     <div class="scoreNodeContainer"><input class="scoreNode node6 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node7 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node8 player${i}"></div>
-    <div class="scoreNodeContainer OUT${i}"></div>
+    <div class="scoreNodeContainer OUT${i}"><div class="rowItem">X</div></div>
     <div class="scoreNodeContainer"><input class="scoreNode node9 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node10 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node11 player${i}"></div>
@@ -30,9 +30,8 @@ function addPlayers(){
     <div class="scoreNodeContainer"><input class="scoreNode node15 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node16 player${i}"></div>
     <div class="scoreNodeContainer"><input class="scoreNode node17 player${i}"></div>
-    <div class="scoreNodeContainer IN${i}"></div>
+    <div class="scoreNodeContainer IN${i}"><div class="rowItem">X</div></div>
     <div class="scoreNodeContainer total${i}"></div>
-    <div class="removeButton" onclick='removePlayer(".player-container-${i}")'>DELETE</div>
 </div>
 `);
     }
@@ -97,10 +96,33 @@ function addCourse() {
             $(".row2").append(appendString);
             $(".row2").append(`<div class="totalPar rowItem">${totalPar2}</div>`);
             $(".row2").append(`<div class="totalPar rowItem">${totalPar + totalPar2}</div>`);
+
+            $(".content").append(`<div class="row3 row">
+            <div class="handicap rowStart">Handicap</div>
+        </div>`);
+            appendString = ``;
+            for (let i = 0; i < 9; i++) {
+                appendString += `<div class="yard rowItem">${myData.data.holes[i].teeBoxes[teeType].hcp}</div>
+`;
+                totalPar += parseInt(myData.data.holes[i].teeBoxes[teeType].hcp);
+            }
+            $(".row3").append(appendString);
+
+            $(".row3").append(`<div class="totalPar rowItem">N/A</div>`);
+            appendString = ``;
+            for (let i = 9; i < 18; i++) {
+                appendString += `<div class="yard rowItem">${myData.data.holes[i].teeBoxes[teeType].hcp}</div>
+`;
+                totalPar2 += parseInt(myData.data.holes[i].teeBoxes[teeType].hcp);
+            }
+            $(".row3").append(appendString);
+            $(".row3").append(`<div class="totalPar rowItem">N/A</div>`);
+            $(".row3").append(`<div class="totalPar rowItem">N/A</div>`);
         });
 
 
     });
+
 
     $(".courseSelector").hide();
 }
@@ -126,9 +148,11 @@ for (let i = 0; i < 18; i++){
     player3Test[i] = {complete: false};
 }
 
+let completeGame = false;
 
-
-
+function clearModal(){
+    $(".endScreen").remove();
+}
 
 function checkInput(){
     $('.scoreNode').each(function() {
@@ -156,52 +180,50 @@ function checkInput(){
                     player3Test[parseInt(nodeNum[1])] = {complete: true};
                     player3[nodeNum[1]]= elem.val();
                 }
+                if (nodeNum[1] == 17) {
+                    completeGame = true;
+                }
             }
         });
     });
+    let completeCount0 = 0;
+    let completeCount1 = 0;
+    let completeCount2 = 0;
+    let completeCount3 = 0;
+    let total0 = 0;
+    let total1 = 0;
+    let total2 = 0;
+    let total3 = 0;
     for (let i = 0; i < 18; i++){
-        let completeCount0 = 0;
-        let completeCount1 = 0;
-        let completeCount2 = 0;
-        let completeCount3 = 0;
-
-        if (player0Test[i] == {complete: true}){
-            completeCount0++;
-        }
-        if (player1Test[i] == {complete: true}){
-            completeCount1++;
-        }
-        if (player2Test[i] == {complete: true}){
-            completeCount2++;
-        }
-        if (player3Test[i] == {complete: true}){
-            completeCount3++;
-        }
-
-        if (completeCount0 == 9){
-            let tempTotal = 0;
-            for(let i = 0; i < 9; i++){
-                tempTotal+= player0[i];
-            }
-            $(".OUT0").html(`<div class="outTotal">${tempTotal}</div>`);
-        }
-        else if (completeCount0 == 18) {
-            let tempTotal = 0;
-            for(let i = 9; i < 18; i++){
-                tempTotal+= player0[i];
-            }
-            $(".IN0").html(`<div class="inTotal">${tempTotal}</div>`);
-            if (($(".OUT0").innerHTML + tempTotal) < 72){
-                $("body").append("Great Job!");
-            }
-            else{
-                $("body").append("Better Luck Next Game!");
-            }
-        }
-
-
+        total0 = total0 + parseInt(player0[i]);
+        total1 = total1 + parseInt(player1[i]);
+        total2 = total2 + parseInt(player2[i]);
+        total3 = total3 + parseInt(player3[i]);
     }
 
+    $(".total0").html(total0);
+    $(".total1").html(total1);
+    $(".total2").html(total2);
+    $(".total3").html(total3);
+    if (completeGame === true){
+        if(total0 > 72){
+            $("body").append(`<div class="modal endScreen">
+        <div class="panel">
+            <span>Better Luck Next Game!</span>
+            <button onclick="clearModal()">Continue</button>
+        </div>
+    </div>`);
+        }
+        else {
+            $("body").append(`<div class="modal endScreen">
+        <div class="panel">
+            <span>On to the PGA!</span>
+            <button onclick="clearModal()">Continue</button>
+        </div>
+    </div>`);
+            completeGame=false;
+        }
+    }
 }
 
 

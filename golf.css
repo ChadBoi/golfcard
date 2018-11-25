@@ -32,6 +32,7 @@ html, body{
 
 .modal{
     position: absolute;
+    top: 0px;
     background: rgba(0,0,0,0.4);
     display: flex;
     justify-content: center;
@@ -81,6 +82,30 @@ html, body{
     border: 1px black solid;
     text-align: center;
     width: 75px;
+    height: 35px;
+    padding-top: 15px;
+}
+.total0{
+    text-align: center;
+    width: 50px;
+    height: 35px;
+    padding-top: 15px;
+}
+.total1{
+    text-align: center;
+    width: 50px;
+    height: 35px;
+    padding-top: 15px;
+}
+.total2{
+    text-align: center;
+    width: 50px;
+    height: 35px;
+    padding-top: 15px;
+}
+.total3{
+    text-align: center;
+    width: 50px;
     height: 35px;
     padding-top: 15px;
 }
