@@ -11,8 +11,24 @@ html, body{
     visibility: hidden;
 }
 
-
-
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.rowItem{
+    border: 1px black solid;
+    text-align: center;
+    padding-top: 15px;
+    width: 50px;
+    height: 35px;
+}
+.rowStart{
+    border: 1px black solid;
+    text-align: center;
+    width: 150px;
+    height: 35px;
+    padding-top: 15px;
+}
 
 .modal{
     position: absolute;
@@ -37,7 +53,34 @@ html, body{
 
 .player-container{
     display:flex;
+    height: 50px;
     flex-direction: row;
-    width: 500px;
-    justify-content: space-between;
+    width: 100%;
+}
+.scoreNodeContainer{
+    border: 1px black solid;
+    text-align: center;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+}
+.scoreNode{
+    text-align: center;
+    padding: 0;
+    width: 45px;
+    height: 45px;
+}
+.player{
+    border: 1px black solid;
+    text-align: center;
+    width: 150px;
+    height: 35px;
+    padding-top: 15px;
+}
+.removeButton{
+    border: 1px black solid;
+    text-align: center;
+    width: 75px;
+    height: 35px;
+    padding-top: 15px;
 }
