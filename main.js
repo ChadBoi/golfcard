@@ -45,7 +45,7 @@ function addCourse() {
                 totalYards += myData.data.holes[i].teeBoxes[teeType].yards;
             }
             $(".row1").append(appendString);
-            $(".row1").append(`<div class="totalYards">${totalYards}</div>`);
+            $(".row1").append(`<div class="totalYards rowItem">${totalYards}</div>`);
             let totalYards2;
             appendString = ``;
             for (let i = 9; i < 18; i++) {
@@ -53,25 +53,30 @@ function addCourse() {
 `;
                 totalYards2 += myData.data.holes[i].teeBoxes[teeType].yards;
             }
-            $(".row1").append(`<div class="totalYards">${totalYards2}</div>`);
-            $(".row1").append(`<div class="totalYards">${totalYards + totalYards2}</div>`);
+            $(".row1").append(appendString);
+            $(".row1").append(`<div class="totalYards rowItem">${totalYards2}</div>`);
+            $(".row1").append(`<div class="totalYards rowItem">${totalYards + totalYards2}</div>`);
 
             appendString = ``;
-            totalPar;
+            let totalPar;
             for (let i = 0; i < 9; i++) {
                 appendString += `<div class="yard rowItem">${myData.data.holes[i].teeBoxes[teeType].par}</div>
 `;
-                totalYards += myData.data.holes[i].teeBoxes[teeType].par;
+                totalPar += myData.data.holes[i].teeBoxes[teeType].par;
             }
             $(".row1").append(appendString);
-            $(".row1").append(`totalYards`);
-            totalPar2;
+
+            $(".row1").append(`<div class="totalPar rowItem">${totalPar}</div>`);
+            let totalPar2;
             appendString = ``;
             for (let i = 9; i < 18; i++) {
-                appendString += `<div class="yard rowItem">${myData.data.holes[i].teeBoxes[teeType].yards}</div>
+                appendString += `<div class="yard rowItem">${myData.data.holes[i].teeBoxes[teeType].par}</div>
 `;
-                totalYards2 += myData.data.holes[i].teeBoxes[teeType].yards;
+                totalPar2 += myData.data.holes[i].teeBoxes[teeType].par;
             }
+            $(".row1").append(appendString);
+            $(".row1").append(`<div class="totalPar rowItem">${totalPar2}</div>`);
+            $(".row1").append(`<div class="totalPar rowItem">${totalPar + totalPar2}</div>`);
         });
 
 
